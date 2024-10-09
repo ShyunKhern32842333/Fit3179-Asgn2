@@ -322,43 +322,52 @@
     {
       "description": "Line chart showing income trends over the years.",
       "width": 400,
-      "height": 200,
+      "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/hh_income_state.csv"
   },
   "mark": "line",
   "encoding": {
-    "x": {"field": "date", "type": "temporal"},
-    "y": {"field": "income_mean", "type": "quantitative"},
-    "color": {"field": "state", "type": "nominal"}
-      }
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "axis": {"title": "Year"}
+    },
+    "y": {
+      "field": "income_mean",
+      "type": "quantitative",
+      "axis": {"title": "Mean Income"}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "legend": {"title": "State", "orient": "right", "direction": "vertical", "gradientLength": 200}
     }
-    ,
-    {
-      "description": "Line chart showing income trends over the years.",
-  "data": {
-    "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/hh_income_state.csv"
   },
-  "mark": "line",
+  "transform": [
+    {"filter": "year(datum.date) >= 2016 && year(datum.date) <= 2022"}
+  ]
+}
+,
+{ "description": "Faceted bar chart showing the proportions of employment by age, gender, and state over time.",
+        "width": 400,
+        "height": 800,
+        "data": {
+          "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/sdg_04-6-1.csv"
+        },
+        "mark": "line",
   "encoding": {
     "x": {"field": "date", "type": "temporal"},
-    "y": {"field": "income_mean", "type": "quantitative"},
-    "color": {"field": "state", "type": "nominal"}
-      }
-    }
-    ,
-    {
-      "description": "Line chart showing income trends over the years.",
-  "data": {
-    "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/hh_income_state.csv"
-  },
-  "mark": "line",
-  "encoding": {
-    "x": {"field": "date", "type": "temporal"},
-    "y": {"field": "income_mean", "type": "quantitative"},
-    "color": {"field": "state", "type": "nominal"}
-      }
-    }
+    "y": {"field": "proportion", "type": "quantitative"},
+    "color": {"field": "age", "type": "nominal"}
+    }}
+
+
+      
+   
+    
+      
+  
         
       
       
