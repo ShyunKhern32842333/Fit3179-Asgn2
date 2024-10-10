@@ -37,7 +37,7 @@
     {
       "title": "Malaysia's Literacy, Enrolment, and Completion Rates by State (2019)",
       "width": 600,
-      "height": 600,
+      "height": 400,
       "projection": {"type": "equalEarth"},
       "data": {
         "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/js/geoBoundaries-MYS-ADM1.topojson",
@@ -320,86 +320,116 @@
       ]
     },
     
-{
-  "title": "Literacy Rate over the Years 2016-2022.",
-  "width": 400,
-  "height": 600,
-  "data": {
-    "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/sdg_04-6-1.csv"
-  },
-  
-  "layer": [
     {
-      "mark": "line",
-      "encoding": {
-        "x": {"field": "date", "type": "temporal", "axis": {"title": "Year"}},
-        "y": {"field": "proportion", "type": "quantitative", "axis": {"title": "Literacy Rate (%)"}, "scale": {"domain": [80, 100]}},
-        "color": {"field": "state", "type": "nominal", "legend": {"title": "State", "orient": "right", "direction": "vertical"}}
-      }
-    },
-    {
-      "mark": "point",
-      "encoding": {
-        "x": {"field": "date", "type": "temporal"},
-        "y": {"field": "proportion", "type": "quantitative"},
-        "color": {"field": "state", "type": "nominal"},
-        "tooltip": [
-          {"field": "date", "type": "temporal", "title": "Year"},
-          {"field": "proportion", "type": "quantitative", "title": "Literacy Rate (%)"},
-          {"field": "state", "type": "nominal", "title": "State"}
-        ]
-      }
+      "title": "Literacy Rate over the Years (2016-2022)",
+      "width": 400,
+      "height": 400,
+      "data": {
+        "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/sdg_04-6-1.csv"
+      },
+      "transform": [
+        {"filter": "datum.proportion >= 85 && datum.proportion <= 100"},
+        {"filter": "year(datum.date) >= 2016 && year(datum.date) <= 2022"}
+      ],
+      "layer": [
+        {
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "date",
+              "type": "temporal",
+              "axis": {"title": "Year"},
+              "scale": {"domain": ["2015-12-31", "2022-01-01"]}
+            },
+            "y": {
+              "field": "proportion",
+              "type": "quantitative",
+              "axis": {"title": "Literacy Rate (%)"},
+              "scale": {"domain": [80, 100]}
+            },
+            "color": {
+              "field": "state",
+              "type": "nominal",
+              "legend": {"title": "State", "orient": "right", "direction": "vertical"}
+            }
+          }
+        },
+        {
+          "mark": "point",
+          "encoding": {
+            "x": {
+              "field": "date",
+              "type": "temporal",
+              "scale": {"domain": ["2015-12-31", "2022-01-01"]}
+            },
+            "y": {
+              "field": "proportion",
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "state",
+              "type": "nominal"
+            },
+            "tooltip": [
+              {"field": "date", "type": "temporal", "title": "Year"},
+              {"field": "proportion", "type": "quantitative", "title": "Literacy Rate (%)"},
+              {"field": "state", "type": "nominal", "title": "State"}
+            ]
+          }
+        }
+      ]
     }
-  ]
-}
+    
 ,
 {
   "title": "Line chart showing income trends over the years.",
   "width": 400,
-  "height": 600,
-"data": {
-"url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/hh_income_state.csv"
-},
-"mark": {
-"type": "area",
-"tooltip": true
-},
-"encoding": {
-"x": {
-  "field": "date",
-  "type": "temporal",
-  "axis": {"title": "Year"}
-},
-"y": {
-  "field": "income_mean",
-  "type": "quantitative",
-  "axis": {"title": "Mean Income"}
-},
-"color": {
-  "field": "state",
-  "type": "nominal",
-  "legend": {"title": "State", "orient": "right", "direction": "vertical", "gradientLength": 200}
-},
-"tooltip": [
-  {"field": "date", "type": "temporal", "title": "Year"},
-  {"field": "income_mean", "type": "quantitative", "title": "Mean Income"},
-  {"field": "state", "type": "nominal", "title": "State"}
-]
-},
-"transform": [
-{"filter": "year(datum.date) >= 2016 && year(datum.date) <= 2022"}
-]
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/hh_income_state.csv"
+  },
+  "mark": {
+    "type": "area",
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "axis": {"title": "Year"},
+      "scale": {"domain": ["2015-12-31", "2022-01-01"]}
+    },
+    "y": {
+      "field": "income_mean",
+      "type": "quantitative",
+      "axis": {"title": "Mean Income"}
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "legend": {"title": "State", "orient": "right", "direction": "vertical", "gradientLength": 200}
+    },
+    "tooltip": [
+      {"field": "date", "type": "temporal", "title": "Year"},
+      {"field": "income_mean", "type": "quantitative", "title": "Mean Income"},
+      {"field": "state", "type": "nominal", "title": "State"}
+    ]
+  },
+  "transform": [
+    {"filter": "year(datum.date) >= 2016 && year(datum.date) <= 2022"}
+  ]
 }
+
 ,
 {
-  "title": "Households Over the Years",
+  "title": "Households Over the Years (2016-2022)",
   "width": 400,
-  "height": 600,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/hh_lq_state.csv"
   },
   "transform": [
-    {"filter": "year(datum.date) >= 2010 && year(datum.date) <= 2022"}
+    {"filter": "year(datum.date) >= 2016 && year(datum.date) <= 2022"}
   ],
   "mark": "bar",
   "encoding": {
