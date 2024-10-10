@@ -40,7 +40,7 @@
       "height": 600,
       "projection": {"type": "equalEarth"},
       "data": {
-        "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit-3179-Week-10/refs/heads/main/js/geoBoundaries-MYS-ADM1.topojson",
+        "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/js/geoBoundaries-MYS-ADM1.topojson",
         "format": {"type": "topojson", "feature": "MYSADM1gbOpen"}
       },
       "transform": [
@@ -48,7 +48,7 @@
           "lookup": "properties.shapeName",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit-3179-Week-10/refs/heads/main/data/Malaysia_States_Literacy_2019.csv"
+              "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/Malaysia_States_Literacy_2019.csv"
             },
             "key": "Country",
             "fields": [
