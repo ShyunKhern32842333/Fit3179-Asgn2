@@ -15,12 +15,20 @@
   
 <div id="malaysia_literacy_state"></div>
 
+<div id="household_income"></div>
+
 <script type="text/javascript">
 
   var spec2 = "js/malaysia_literacy_state.vg.json";
   vegaEmbed('#malaysia_literacy_state', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
+  var spec3 = "js/household_income.json"; // New spec for household income
+  vegaEmbed('#household_income', spec3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+
 </script>
 
 </body>
