@@ -9,21 +9,72 @@
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
+  <style>
+    body {
+      background-color: #de9e2f;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    h2 {
+      color: darkblue;
+      font-size: 24px;
+    }
+    p {
+      font-family: 'Times New Roman', serif;
+      font-size: 18px;
+      color: #333;
+      margin: 0 auto;
+      width: 80%;
+    }
+    .container {
+      margin: 20px auto;
+      width: 80%;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
 </head>
 <body>
   
   
+  
+<h2>Malaysia Literacy State</h2>
+<p>This visualization explores education and literacy rates in Malaysia, 
+  focusing on key trends and factors over the past two decades. 
+  The data examines literacy rates, school enrollment figures, gender disparities in education, 
+  and the relationship between government education spending and literacy improvements. 
+  By analyzing these factors, the visualization sheds light on Malaysia's progress in education 
+  and the impact of investments in literacy on different population groups.</p>
+
+  
 <div id="malaysia_literacy_state"></div>
+
+<h3>Key Highlights</h3>
+    <ul>
+        <li>Overall literacy rates across different states</li>
+        <li>School enrollment figures for primary and secondary education</li>
+        <li>Gender disparities in literacy and enrollment</li>
+    </ul>
+</div>
+
+<h2>Household Income Distribution</h2>
+<p>This chart illustrates the distribution of household income across various income groups. 
+  It helps to understand the economic landscape and income inequality within the population.</p>
 
 <div id="household_income"></div>
 
 <script type="text/javascript">
+  
 
   var spec2 = "js/malaysia_literacy_state.vg.json";
   vegaEmbed('#malaysia_literacy_state', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
-  var spec3 = "js/household_income.json"; // New spec for household income
+
+  var spec3 = "js/household_income.vg.json"; // New spec for household income
   vegaEmbed('#household_income', spec3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
