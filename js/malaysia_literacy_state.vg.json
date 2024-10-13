@@ -176,7 +176,7 @@
               "type": "quantitative",
               "scale": {"domain": [0, 30], "range": ["#D1E5F0", "#2166AC"]},
               "legend": {
-                "title": "M Primary enrol 1-10000",
+                "title": "M Primary Enrolment",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -208,7 +208,7 @@
               "type": "quantitative",
               "scale": {"domain": [0, 30], "range": ["#D1E5F0", "#2166AC"]},
               "legend": {
-                "title": "F Primary enrol 1-10000",
+                "title": "F Primary Enrolment",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -240,7 +240,7 @@
               "type": "quantitative",
               "scale": {"domain": [0, 20], "range": ["#FEE0D2", "#99000D"]},
               "legend": {
-                "title": "M Secondary enrol 1-10000",
+                "title": "M Secondary Enrolment",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -272,7 +272,7 @@
               "type": "quantitative",
               "scale": {"domain": [0, 20], "range": ["#FEE0D2", "#99000D"]},
               "legend": {
-                "title": "F Secondary enrol 1-10000",
+                "title": "F Secondary Enrolment",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -304,7 +304,7 @@
               "type": "quantitative",
               "scale": {"domain": [80, 110], "range": ["#FFFFE0", "#0000FF"]},
               "legend": {
-                "title": "M Primary 80-110(%)",
+                "title": "M Primary Complete(%)",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -336,7 +336,7 @@
               "type": "quantitative",
               "scale": {"domain": [80, 110], "range": ["#FFFFE0", "#0000FF"]},
               "legend": {
-                "title": "F Primary 80-110(%)",
+                "title": "F Primary Complete(%)",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -368,7 +368,7 @@
               "type": "quantitative",
               "scale": {"domain": [80, 110], "range": ["#FFA500", "#800080"]},
               "legend": {
-                "title": "M Secondary 80-110(%)",
+                "title": "M Secondary Complete(%)",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -400,7 +400,7 @@
               "type": "quantitative",
               "scale": {"domain": [80, 110], "range": ["#FFA500", "#800080"]},
               "legend": {
-                "title": "F Secondary 80-110(%)",
+                "title": "F Secondary Complete(%)",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
