@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+      "background": "#FFFFE0",
+      "axis": {
+        "labelFont": "Arial",
+        "titleFont": "Arial"
+      },
+      "title": {
+        "font": "Arial",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "color": "#000080"
+      },
+      "legend": {
+        "labelFont": "Arial",
+        "titleFont": "Arial"
+      }
+    },
+    "width": 600,
+    "height": 500,
+    "data": {
+      "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/school_states.csv"
+    },
+    "transform": [
+      {
+        "calculate": "datum['Number of Schools'] / 100",
+        "as": "Normalized Schools"
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "State",
+        "type": "nominal",
+        "axis": {"title": "State"}
+      },
+      "y": {
+        "field": "Normalized Schools",
+        "type": "quantitative",
+        "axis": {
+          "title": "Number of Schools (1 : 100)"
+        }
+      },
+      "color": {
+        "field": "Education Stage",
+        "type": "nominal",
+        "legend": {"title": "Education Stage"}
+      },
+      "tooltip": [
+        {"field": "State", "type": "nominal", "title": "State"},
+        {"field": "Education Stage", "type": "nominal", "title": "Education Stage"},
+        {"field": "Number of Schools", "type": "quantitative", "title": "Number of Schools"},
+        {"field": "Normalized Schools", "type": "quantitative", "title": "Normalized Number of Schools"}
+      ]
+    }
+  }
+  

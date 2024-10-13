@@ -1,31 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Malaysia's Literacy, Enrolment, and Completion Rates by State (2019)",
-  "width": 800,
-  "height": 400,
-  "projection": {"type": "equalEarth"},
-  "data": {
-    "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit-3179-Week-10/refs/heads/main/js/geoBoundaries-MYS-ADM1.topojson",
-    "format": {"type": "topojson", "feature": "MYSADM1gbOpen"}
-  },
-  "transform": [
-    {
-      "lookup": "properties.shapeName",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit-3179-Week-10/refs/heads/main/data/Malaysia_States_Literacy_2019.csv"
-        },
-        "key": "Country",
-        "fields": [
-          "MaleLiteracyRate", "FemaleLiteracyRate",
-          "MalePrimaryEnrolement", "FemalePrimaryEnrolment",
-          "MaleSecondaryEnrolement", "FemaleSecondaryEnrolment",
-          "MalePrimaryCompletionRate", "FemalePrimaryCompletionRate",
-          "MaleSecondaryCompletionRate", "FemaleSecondaryCompletionRate"
-        ]
-      }
-    }
-  ],
   "params": [
     {
       "name": "Gender",
@@ -58,260 +32,419 @@
       }
     }
   ],
-  "resolve": {
-    "legend": {"color": "independent"},
-    "scale": {"color": "independent"}
-  },
-  "layer": [
+  "vconcat": [
     {
+      "title": "Malaysia's Literacy, Enrolment, and Completion Rates by State (2019)",
+      "width": 600,
+      "height": 400,
+      "projection": {"type": "equalEarth"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/js/geoBoundaries-MYS-ADM1.topojson",
+        "format": {"type": "topojson", "feature": "MYSADM1gbOpen"}
+      },
       "transform": [
         {
-          "filter": "(Gender === 'Male' && DataField === 'Literacy Rate')"
+          "lookup": "properties.shapeName",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/Malaysia_States_Literacy_2019.csv"
+            },
+            "key": "Country",
+            "fields": [
+              "MaleLiteracyRate", "FemaleLiteracyRate",
+              "MalePrimaryEnrolement", "FemalePrimaryEnrolment",
+              "MaleSecondaryEnrolement", "FemaleSecondaryEnrolment",
+              "MalePrimaryCompletionRate", "FemalePrimaryCompletionRate",
+              "MaleSecondaryCompletionRate", "FemaleSecondaryCompletionRate"
+            ]
+          }
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "MaleLiteracyRate",
-          "type": "quantitative",
-          "scale": {"domain": [80, 100], "range": ["lightyellow", "darkgreen"]},
-          "legend": {"title": "Male Literacy Rate (%)", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "MaleLiteracyRate",
-            "type": "quantitative",
-            "format": ".1f",
-            "title": "Male Literacy Rate (%)"
-          }
-        ]
-      }
-    },
-    {
-      "transform": [
+      "resolve": {
+        "legend": {"color": "independent"},
+        "scale": {"color": "independent"}
+      },
+      "layer": [
         {
-          "filter": "(Gender === 'Female' && DataField === 'Literacy Rate')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "FemaleLiteracyRate",
-          "type": "quantitative",
-          "scale": {"domain": [80, 100], "range": ["lightyellow", "darkgreen"]},
-          "legend": {"title": "Female Literacy Rate (%)", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "FemaleLiteracyRate",
-            "type": "quantitative",
-            "format": ".1f",
-            "title": "Female Literacy Rate (%)"
+          "transform": [
+            {
+              "filter": "(Gender === 'Male' && DataField === 'Literacy Rate')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "MaleLiteracyRate",
+              "type": "quantitative",
+              "scale": {"domain": [80, 100], "range": ["lightblue", "darkblue"]},
+              "legend": {
+                "title": "Male Literacy Rate (%)",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "MaleLiteracyRate",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Male Literacy Rate (%)"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Male' && DataField === 'Primary Enrolment')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "MalePrimaryEnrolement",
-          "type": "quantitative",
-          "scale": {"domain": [0, 120000], "range": ["lightcoral", "crimson"]},
-          "legend": {"title": "Male Primary Enrolment" , "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "MalePrimaryEnrolement",
-            "type": "quantitative",
-            "format": ".0f",
-            "title": "Male Primary Enrolment"
+          "transform": [
+            {
+              "filter": "(Gender === 'Female' && DataField === 'Literacy Rate')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "FemaleLiteracyRate",
+              "type": "quantitative",
+              "scale": {"domain": [80, 100], "range": ["lightpurple", "darkpurple"]},
+              "legend": {
+                "title": "Female Literacy Rate (%)",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "FemaleLiteracyRate",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Female Literacy Rate (%)"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Female' && DataField === 'Primary Enrolment')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "FemalePrimaryEnrolment",
-          "type": "quantitative",
-          "scale": {"domain": [0, 120000], "range": ["lightcoral", "crimson"]},
-          "legend": {"title": "Female Primary Enrolment", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "FemalePrimaryEnrolment",
-            "type": "quantitative",
-            "format": ".0f",
-            "title": "Female Primary Enrolment"
+          "transform": [
+            {
+              "filter": "(Gender === 'Male' && DataField === 'Primary Enrolment')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "MalePrimaryEnrolement",
+              "type": "quantitative",
+              "scale": {"domain": [0, 120000], "range": ["lightcoral", "crimson"]},
+              "legend": {
+                "title": "Male Primary Enrolment/n 0-3000",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "MalePrimaryEnrolement",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Male Primary Enrolment"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Male' && DataField === 'Secondary Enrolment')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "MaleSecondaryEnrolement",
-          "type": "quantitative",
-          "scale": {"domain": [0, 180000], "range": ["lightblue", "darkblue"]},
-          "legend": {"title": "Male Secondary Enrolment","orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "MaleSecondaryEnrolement",
-            "type": "quantitative",
-            "format": ".0f",
-            "title": "Male Secondary Enrolment"
+          "transform": [
+            {
+              "filter": "(Gender === 'Female' && DataField === 'Primary Enrolment')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "FemalePrimaryEnrolment",
+              "type": "quantitative",
+              "scale": {"domain": [0, 120000], "range": ["lightpink", "deeppink"]},
+              "legend": {
+                "title": "Female Primary Enrolment",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "FemalePrimaryEnrolment",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Female Primary Enrolment"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Female' && DataField === 'Secondary Enrolment')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "FemaleSecondaryEnrolment",
-          "type": "quantitative",
-          "scale": {"domain": [0, 180000], "range": ["lightblue", "darkblue"]},
-          "legend": {"title": "Female Secondary Enrolment", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "FemaleSecondaryEnrolment",
-            "type": "quantitative",
-            "format": ".0f",
-            "title": "Female Secondary Enrolment"
+          "transform": [
+            {
+              "filter": "(Gender === 'Male' && DataField === 'Secondary Enrolment')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "MaleSecondaryEnrolement",
+              "type": "quantitative",
+              "scale": {"domain": [0, 180000], "range": ["lightblue", "darkblue"]},
+              "legend": {
+                "title": "Male Secondary Enrolment",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "MaleSecondaryEnrolement",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Male Secondary Enrolment"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Male' && DataField === 'Primary Completion Rate')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "MalePrimaryCompletionRate",
-          "type": "quantitative",
-          "scale": {"domain": [80, 105], "range": ["navajowhite", "darkred"]},
-          "legend": {"title": "Male Primary Completion Rate (%)", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "MalePrimaryCompletionRate",
-            "type": "quantitative",
-            "format": ".1f",
-            "title": "Male Primary Completion Rate (%)"
+          "transform": [
+            {
+              "filter": "(Gender === 'Female' && DataField === 'Secondary Enrolment')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "FemaleSecondaryEnrolment",
+              "type": "quantitative",
+              "scale": {"domain": [0, 180000], "range": ["lavender", "purple"]},
+              "legend": {
+                "title": "Female Secondary Enrolment",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "FemaleSecondaryEnrolment",
+                "type": "quantitative",
+                "format": ".0f",
+                "title": "Female Secondary Enrolment"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Female' && DataField === 'Primary Completion Rate')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "FemalePrimaryCompletionRate",
-          "type": "quantitative",
-          "scale": {"domain": [80, 105], "range": ["navajowhite", "darkred"]},
-          "legend": {"title": "Female Primary Completion Rate (%)", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "FemalePrimaryCompletionRate",
-            "type": "quantitative",
-            "format": ".1f",
-            "title": "Female Primary Completion Rate (%)"
+          "transform": [
+            {
+              "filter": "(Gender === 'Male' && DataField === 'Primary Completion Rate')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "MalePrimaryCompletionRate",
+              "type": "quantitative",
+              "scale": {"domain": [80, 105], "range": ["navajowhite", "darkred"]},
+              "legend": {
+                "title": "Male Primary Completion Rate (%)",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "MalePrimaryCompletionRate",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Male Primary Completion Rate (%)"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Male' && DataField === 'Secondary Completion Rate')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "MaleSecondaryCompletionRate",
-          "type": "quantitative",
-          "scale": {"domain": [80, 105], "range": ["lightcyan", "teal"]},
-          "legend": {"title": "Male Secondary Completion Rate (%)", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "MaleSecondaryCompletionRate",
-            "type": "quantitative",
-            "format": ".1f",
-            "title": "Male Secondary Completion Rate (%)"
+          "transform": [
+            {
+              "filter": "(Gender === 'Female' && DataField === 'Primary Completion Rate')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "FemalePrimaryCompletionRate",
+              "type": "quantitative",
+              "scale": {"domain": [80, 105], "range": ["navajowhite", "darkred"]},
+              "legend": {
+                "title": "Female Primary Completion Rate (%)",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "FemalePrimaryCompletionRate",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Female Primary Completion Rate (%)"
+              }
+            ]
           }
-        ]
-      }
-    },
-    {
-      "transform": [
+        },
         {
-          "filter": "(Gender === 'Female' && DataField === 'Secondary Completion Rate')"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black"},
-      "encoding": {
-        "color": {
-          "field": "FemaleSecondaryCompletionRate",
-          "type": "quantitative",
-          "scale": {"domain": [80, 105], "range": ["lightcyan", "teal"]},
-          "legend": {"title": "Female Secondary Completion Rate (%)", "orient": "right", "direction": "horizontal", "gradientLength": 200}
-        },
-        "tooltip": [
-          {"field": "properties.shapeName", "type": "nominal", "title": "State"},
-          {
-            "field": "FemaleSecondaryCompletionRate",
-            "type": "quantitative",
-            "format": ".1f",
-            "title": "Female Secondary Completion Rate (%)"
+          "transform": [
+            {
+              "filter": "(Gender === 'Male' && DataField === 'Secondary Completion Rate')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "MaleSecondaryCompletionRate",
+              "type": "quantitative",
+              "scale": {"domain": [80, 105], "range": ["lightcyan", "teal"]},
+              "legend": {
+                "title": "Male Secondary Completion Rate (%)",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "MaleSecondaryCompletionRate",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Male Secondary Completion Rate (%)"
+              }
+            ]
           }
-        ]
-      }
+        },
+        {
+          "transform": [
+            {
+              "filter": "(Gender === 'Female' && DataField === 'Secondary Completion Rate')"
+            }
+          ],
+          "mark": {"type": "geoshape", "stroke": "black"},
+          "encoding": {
+            "color": {
+              "field": "FemaleSecondaryCompletionRate",
+              "type": "quantitative",
+              "scale": {"domain": [80, 105], "range": ["lightcyan", "teal"]},
+              "legend": {
+                "title": "Female Secondary Completion Rate (%)",
+                "orient": "right",
+                "direction": "horizontal",
+                "gradientLength": 200,
+                "titleFont": "Verdana",
+                "labelFont": "Verdana"
+              }
+            },
+            "tooltip": [
+              {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+              {
+                "field": "FemaleSecondaryCompletionRate",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Female Secondary Completion Rate (%)"
+              }
+        
+            ]
+          }
+        }
+      ]
+    }, 
+    {
+      "title": "Literacy Rate over the Years (2016-2022)",
+      "width": 400,
+      "height": 400,
+      "data": {
+        "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/sdg_04-6-1.csv"
+      },
+      "transform": [
+        {"filter": "datum.proportion >= 85 && datum.proportion <= 100"},
+        {"filter": "year(datum.date) >= 2016 && year(datum.date) <= 2022"}
+      ],
+      "layer": [
+        {
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "date",
+              "type": "temporal",
+              "axis": {"title": "Year"},
+              "scale": {"domain": ["2015-12-31", "2022-01-01"]}
+            },
+            "y": {
+              "field": "proportion",
+              "type": "quantitative",
+              "axis": {"title": "Literacy Rate (%)"},
+              "scale": {"domain": [80, 100]}
+            },
+            "color": {
+              "field": "state",
+              "type": "nominal",
+              "legend": {"title": "State", "orient": "right", "direction": "vertical"}
+            }
+          }
+        },
+        {
+          "mark": "point",
+          "encoding": {
+            "x": {
+              "field": "date",
+              "type": "temporal",
+              "scale": {"domain": ["2015-12-31", "2022-01-01"]}
+            },
+            "y": {
+              "field": "proportion",
+              "type": "quantitative"
+            },
+            "color": {
+              "field": "state",
+              "type": "nominal"
+            },
+            "tooltip": [
+              {"field": "date", "type": "temporal", "title": "Year"},
+              {"field": "proportion", "type": "quantitative", "title": "Literacy Rate (%)"},
+              {"field": "state", "type": "nominal", "title": "State"}
+            ]
+          }
+        }
+      ]
     }
+
+
+
   ]
 }

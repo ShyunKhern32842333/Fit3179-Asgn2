@@ -11,8 +11,8 @@
 
   <style>
     body {
-      background-color: #de9e2f;
-      font-family: 'Arial', sans-serif;
+      background-color: #F5F5DC;
+      font-family: 'Corvus', sans-serif;
       text-align: center;
     }
     h2 {
@@ -22,7 +22,7 @@
     p {
       font-family: 'Times New Roman', serif;
       font-size: 18px;
-      color: #333;
+      color: #333333;
       margin: 0 auto;
       width: 80%;
     }
@@ -33,6 +33,14 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    ul {
+      text-align: left;
+      margin: 0 auto;
+      width: 80%;
+    }
+    ul ul {
+      margin-left: 20px;
     }
   </style>
 
@@ -48,23 +56,71 @@
   and the relationship between government education spending and literacy improvements. 
   By analyzing these factors, the visualization sheds light on Malaysia's progress in education 
   and the impact of investments in literacy on different population groups.</p>
-
   
 <div id="malaysia_literacy_state"></div>
-
-<h3>Key Highlights</h3>
+<h3>Key Insights</h3>
+  <ul>
+    <li><strong>Literacy Rates:</strong></li>
     <ul>
-        <li>Overall literacy rates across different states</li>
-        <li>School enrollment figures for primary and secondary education</li>
-        <li>Gender disparities in literacy and enrollment</li>
+      <li><strong>Male Literacy:</strong> High literacy rates across most states, with Perlis and Negeri Sembilan reaching 99.6%.</li>
+      <li><strong>Female Literacy:</strong> Similarly high, with Putrajaya achieving a perfect 100%.</li>
     </ul>
-</div>
+    <li><strong>Enrollment Figures:</strong></li>
+    <ul>
+      <li><strong>Primary Enrollment:</strong> Significant numbers in states like Selangor (257,737 for females and 271,294 for males) and Sabah (137,965 for females and 146,301 for males).</li>
+      <li><strong>Secondary Enrollment:</strong> Lower than primary, but still substantial, with Johor showing high figures (117,891 for females and 118,598 for males).</li>
+    </ul>
+    <li><strong>Completion Rates:</strong></li>
+    <ul>
+      <li><strong>Primary Completion:</strong> Generally high, with states like Kelantan and Terengganu exceeding 100%.</li>
+      <li><strong>Secondary Completion:</strong> More variability, but still strong, with Kuala Lumpur showing notable rates (100.6% for females and 98.1% for males).</li>
+    </ul>
+  </ul>
 
-<h2>Household Income Distribution</h2>
-<p>This chart illustrates the distribution of household income across various income groups. 
-  It helps to understand the economic landscape and income inequality within the population.</p>
+
+<h2>Literacy Rate over the Years (2016-2022)</h2>
+<p>This visualization displays the literacy rates across various states in Malaysia from 2016 to 2022. The literacy rates between is set to a range of 80% and 100%, ensuring a focus on higher literacy rates. 
+  The visualization uses a line chart to show trends over time, with points marking specific data values for each year. Different colors represent different states, making it easy to compare literacy rates across regions.</p>
+<p>W.P. Putrajaya stands out as having consistently high literacy rates, often reaching or very close to 100% over the years from 2016 to 2022. </p>
+<div id="literacy_over_years"></div>
+
+<h2>Primary and Secondary Schools in States (2019)</h2>
+<p>This bar chart visualizes the number of primary and secondary schools across various states in Malaysia for the year 2019. 
+  The chart uses different colors to distinguish between primary and secondary education stages, making it easy to compare the number of schools at each educational level across different states.
+  Johor seem to have the highest amount of both primary and secondary school combined. 
+  Selangor may have more secondary schools than Perak but latter has more primary school than the former.
+  </p>
+<div id="school_states"></div>
+
+<h2>Income Means and Households (2016-2022)</h2>
+<p>This visualization consists of two charts that explore the mean income and the number of households across various states in Malaysia from 2016 to 2022.</p>
+<p>The first chart is an area chart showing the mean income over the years, while the second chart is a bar chart depicting the number of households over the same period. 
+  Different colors represent different states, making it easy to compare trends across regions.
+  These charts demonstrate a strong coordination between income means and household numbers, indicating that economic growth and population trends are closely linked.</p>
 
 <div id="household_income"></div>
+
+<div style="display: flex; justify-content: space-between;">
+  <div style="width: 90%;">
+    <h3>Income Means over the Years (2016-2022)</h3>
+    <ul>
+      <li><strong>High-Income States:</strong> W.P. Kuala Lumpur and Selangor show higher mean incomes, indicating strong economic growth.</li>
+      <li><strong>Income Stability:</strong> W.P. Putrajaya is considered the most stable while Johor having the most drastic income changes.</li>
+    </ul>
+  </div>
+  <div style="width: 90%;">
+    <h3>Households Over the Years (2016-2022)</h3>
+    <ul>
+      <li><strong>Increasing Households:</strong> Johor and Pulau Pinang (Penang) show a rising number of households, indicating population growth and urbanization.</li>
+      <li><strong>High Household Numbers:</strong> Selangor and Johor consistently show the highest number of households, reflecting their large populations.</li>
+      <li><strong>Growth Trends:</strong> W.P. Kuala Lumpur and Penang have shown steady growth in the number of households, indicating urban expansion and development.</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
 
 <script type="text/javascript">
   
@@ -74,11 +130,22 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  var spec3 = "js/household_income.vg.json"; // New spec for household income
-  vegaEmbed('#household_income', spec3).then(function(result) {
+  var spec3 = "js/literacy_over_years.vg.json"; // New spec for household income
+  vegaEmbed('#literacy_over_years', spec3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
+
+  var spec4 = "js/household_income.vg.json"; // New spec for household income
+  vegaEmbed('#household_income', spec4).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+
+  var spec5 = "js/school_states.vg.json"; // New spec for household income
+  vegaEmbed('#school_states', spec5).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
 
 </script>
 

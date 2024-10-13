@@ -1,0 +1,87 @@
+{
+    "width": 600,
+    "height": 500,
+    "data": {
+      "url": "https://raw.githubusercontent.com/ShyunKhern32842333/Fit3179-Asgn2/refs/heads/main/data/sdg_04-6-1.csv"
+    },
+    "transform": [
+      {"filter": "datum.proportion >= 85 && datum.proportion <= 100"},
+      {"filter": "year(datum.date) >= 2016 && year(datum.date) <= 2022"}
+    ],
+    "layer": [
+      {
+        "mark": "line",
+        "encoding": {
+          "x": {
+            "field": "date",
+            "type": "temporal",
+            "axis": {"title": "Year"},
+            "scale": {"domain": ["2015-12-31", "2022-01-01"]}
+          },
+          "y": {
+            "field": "proportion",
+            "type": "quantitative",
+            "axis": {"title": "Literacy Rate (%)"},
+            "scale": {"domain": [80, 100]}
+          },
+          "color": {
+            "field": "state",
+            "type": "nominal",
+            "scale": {
+              "range": ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d", "#666666", "#8c564b", "#17becf", "#bcbd22", "#7f7f7f", "#ff7f0e", "#2ca02c", "#9467bd", "#c5b0d5"]
+            },
+            "legend": {
+              "title": "State",
+              "orient": "right",
+              "direction": "vertical",
+              "gradientLength": 200
+            }
+          }
+        }
+      },
+      {
+        "mark": "point",
+        "encoding": {
+          "x": {
+            "field": "date",
+            "type": "temporal",
+            "scale": {"domain": ["2015-12-31", "2022-01-01"]}
+          },
+          "y": {
+            "field": "proportion",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "state",
+            "type": "nominal",
+            "scale": {
+              "range": ["#1b9e77", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02", "#a6761d", "#666666", "#8c564b", "#17becf", "#bcbd22", "#7f7f7f", "#ff7f0e", "#2ca02c", "#9467bd", "#c5b0d5"]
+            }
+          },
+          "tooltip": [
+            {"field": "date", "type": "temporal", "title": "Year"},
+            {"field": "proportion", "type": "quantitative", "title": "Literacy Rate (%)"},
+            {"field": "state", "type": "nominal", "title": "State"}
+          ]
+        }
+      }
+    ],
+    "config": {
+      "background": "#FFFFE0",
+      "axis": {
+        "labelFont": "Verdana",
+        "titleFont": "Verdana"
+      },
+      "title": {
+        "font": "Arial",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "color": "#000080"
+      },
+      "legend": {
+        "labelFont": "Verdana",
+        "titleFont": "Verdana"
+      }
+    }
+  }
+  
