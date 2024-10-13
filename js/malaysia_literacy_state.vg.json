@@ -76,6 +76,22 @@
               "MaleSecondaryCompletionRate", "FemaleSecondaryCompletionRate"
             ]
           }
+        },
+        {
+          "calculate": "datum.MalePrimaryEnrolement / 10000",
+          "as": "NormalizedMalePrimaryEnrolement"
+        },
+        {
+          "calculate": "datum.FemalePrimaryEnrolment / 10000",
+          "as": "NormalizedFemalePrimaryEnrolment"
+        },
+        {
+          "calculate": "datum.MaleSecondaryEnrolement / 10000",
+          "as": "NormalizedMaleSecondaryEnrolment"
+        },
+        {
+          "calculate": "datum.FemaleSecondaryEnrolment / 10000",
+          "as": "NormalizedFemaleSecondaryEnrolment"
         }
       ],
       "resolve": {
@@ -156,11 +172,11 @@
           "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
             "color": {
-              "field": "MalePrimaryEnrolement",
+              "field": "NormalizedMalePrimaryEnrolement",
               "type": "quantitative",
-              "scale": {"domain": [0, 300000], "range": ["#D1E5F0", "#2166AC"]},
+              "scale": {"domain": [0, 30], "range": ["#D1E5F0", "#2166AC"]},
               "legend": {
-                "title": "M Primary enrol 0-300,000",
+                "title": "M Primary enrol 1-10000",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -188,11 +204,11 @@
           "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
             "color": {
-              "field": "FemalePrimaryEnrolment",
+              "field": "NormalizedFemalePrimaryEnrolement",
               "type": "quantitative",
-              "scale": {"domain": [0, 300000], "range": ["#FEE0D2", "#99000D"]},
+              "scale": {"domain": [0, 30], "range": ["#D1E5F0", "#2166AC"]},
               "legend": {
-                "title": "F Primary enrol 0-300,000",
+                "title": "F Primary enrol 1-10000",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -220,11 +236,11 @@
           "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
             "color": {
-              "field": "MaleSecondaryEnrolement",
+              "field": "NormalizedMaleSecondaryEnrolment",
               "type": "quantitative",
-              "scale": {"domain": [0, 200000], "range": ["#D1E5F0", "#2166AC"]},
+              "scale": {"domain": [0, 20], "range": ["#FEE0D2", "#99000D"]},
               "legend": {
-                "title": "M Secondary enrol 0-200,000",
+                "title": "M Secondary enrol 1-10000",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
@@ -252,11 +268,11 @@
           "mark": {"type": "geoshape", "stroke": "black"},
           "encoding": {
             "color": {
-              "field": "FemaleSecondaryEnrolment",
+              "field": "NormalizedFemaleSecondaryEnrolment",
               "type": "quantitative",
-              "scale": {"domain": [0, 200000], "range": ["#FEE0D2", "#99000D"]},
+              "scale": {"domain": [0, 20], "range": ["#FEE0D2", "#99000D"]},
               "legend": {
-                "title": "F Secondary enrol 0-200,000",
+                "title": "F Secondary enrol 1-10000",
                 "orient": "right",
                 "direction": "horizontal",
                 "gradientLength": 200,
